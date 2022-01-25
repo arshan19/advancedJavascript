@@ -1,0 +1,56 @@
+class student {
+    static count=0;  //static variable to call
+
+    constructor(name,age,phoneNumber,boardMarks){
+        this.name=name;
+        this.age= age;
+        this.phoneNumber= phoneNumber;
+        this.boardMarks = boardMarks;
+
+        student.countStudent();
+    }
+
+    static countStudent(){
+            return(student.count++);     //this is how u access static variable
+    }
+
+    eligible(){
+
+        if(this.boardMarks>40){
+            console.log(`${this.name}, age ${this.age} is eligible`);
+        }
+        else{
+            console.log(`${this.name}, age ${this.age} is not eligible`);
+        }
+    }
+    setplacementAge(minplacementAge){
+        
+        return  minMarks => {
+                if(this.boardMarks>minMarks && this.age > minplacementAge){
+                    console.log(this.name + " is ready for placement");
+                }else {
+                    console.log(this.name + " is  not ready for placement");
+                }
+            }
+    }
+} 
+
+let ehsan = new student('ehsan',20,878789091,46);
+let ravi = new student('ravi',25,900789091,50);
+let deepak = new student('deepak',22,450089091,35);
+let tarun = new student('tarun',19,911189091,30);
+let ahmed = new student('ahmed',17,100089091,60);
+
+console.log(student.countStudent());
+
+ehsan.eligible();
+ravi.eligible();
+deepak.eligible();
+tarun.eligible();
+ahmed.eligible();
+
+ehsan.setplacementAge(18)(45);
+ravi.setplacementAge(18)(45);
+deepak.setplacementAge(18)(45); // because marks is less than 45
+tarun.setplacementAge(18)(45); // same as deepak , marks is 30.
+ahmed.setplacementAge(18)(45); // because age of ahemd is less than 18.
